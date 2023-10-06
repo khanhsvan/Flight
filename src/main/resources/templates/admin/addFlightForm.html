@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm Chuyến Bay</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1>Thêm Chuyến Bay</h1>
+<!-- Form fields for Flight data -->
+<form action="/flights/add" method="POST">
+    <div class="mb-3">
+        <label for="flightName" class="form-label">Flight Name:</label>
+        <input type="text" class="form-control" id="flightName" name="flightName" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="flightNumber" class="form-label">Flight Number:</label>
+        <input type="text" class="form-control" id="flightNumber" name="flightNumber" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="departureDate" class="form-label">Departure Date:</label>
+        <input type="date" class="form-control" id="departureDate" name="departureDate" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="arrivalDate" class="form-label">Arrival Date:</label>
+        <input type="date" class="form-control" id="arrivalDate" name="arrivalDate" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="departureTime" class="form-label">Departure Time:</label>
+        <input type="time" class="form-control" id="departureTime" name="departureTime" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="arrivalTime" class="form-label">Arrival Time:</label>
+        <input type="time" class="form-control" id="arrivalTime" name="arrivalTime" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="numberSeat" class="form-label">Number of Seats:</label>
+        <input type="number" class="form-control" id="numberSeat" name="numberSeat" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="originCity" class="form-label">Origin City:</label>
+        <input type="text" class="form-control" id="originCity" name="originCity" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="destinationCity" class="form-label">Destination City:</label>
+        <input type="text" class="form-control" id="destinationCity" name="destinationCity" required>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Add Flight">
+</form>
+
+</body>
+</html>

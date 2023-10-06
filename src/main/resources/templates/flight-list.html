@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="./css/carousel.css">
+    <style>
+        /* CSS styles... */
+        header {
+            /*background-color: #4CAF50;*/
+            padding: 10px;
+            color: white;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        /* CSS styles for the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        /* CSS styles for the main content */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding-top: 40px; /* Adjust the value based on the header's height */
+            padding-bottom: 40px; /* Adjust the value based on the footer's height */
+        }
+
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #5dbcd2; /* Update to a brighter color */
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: inline-block;
+            width: 120px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        select {
+            width: 200px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 8px 16px;
+            /*background-color: #4CAF50;*/
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #5dbcd2; /* Update to a brighter color */
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff; /* Update to a brighter color */
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            background: radial-gradient(rgb(136, 15, 159), rgb(6, 19, 31));
+        }
+        /* Add underline effect on hover */
+        .nav-link:hover {
+            border-bottom: 2px solid lightskyblue;
+        }
+    </style>
+</head>
+<body style="background: -webkit-radial-gradient(rgb(136, 15, 159), rgb(6, 19, 31));
+             background:url('../img/main.jpg');">
+
+<header style="padding: 5px;">
+    <!-- Navigation Bar -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <nav class="navbar navbar-expand-md navbar-dark font-weight-bold nav justify-content-between"
+         style="background:url('../img/nav.jpg'); border:3px solid black;">
+
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-home"></i> HOME PAGE
+        </a>
+
+        <!-- Collapsible Nav Links -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/flight/search?">
+                        <i class="fas fa-search"></i> Search Flight
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/payment">
+                        <i class="fas fa-credit-card"></i> Payment
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-history"></i> Booking History
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/userprofile">
+                        <i class="fas fa-user"></i> User Profile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">
+                        <i class="fas fa-logout"></i> Log Out
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div>
+    <h2></h2>
+</div>
+<br>
+<form th:action="@{/flight/search}" method="get" style="display: flex; align-items: center;">
+    <div>
+        <label for="flightName">
+            <i class="fas fa-plane"></i> Flight Name:
+        </label>
+        <select name="flightName" id="flightName" style="margin-right: 20px;">
+            <option value="">All</option>
+            <option th:each="name : ${sortedFlightNames}" th:value="${name}" th:text="${name}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label for="flightNumber">
+            <i class="fas fa-ticket-alt"></i> Flight Number:
+        </label>
+        <select name="flightNumber" id="flightNumber" style="margin-right: 20px;">
+            <option value="">All</option>
+            <option th:each="number : ${sortedFlightNumbers}" th:value="${number}" th:text="${number}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label for="departureTime">
+            <i class="fas fa-clock"></i> Departure Time:
+        </label>
+        <select name="departureTime" id="departureTime" style="margin-right: 20px;">
+            <option value="">All</option>
+            <option th:each="time : ${sortedDepartureTimes}" th:value="${time}" th:text="${time}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label for="arrivalTime">
+            <i class="fas fa-clock"></i> Arrival Time:
+        </label>
+        <select name="arrivalTime" id="arrivalTime" style="margin-right: 20px;">
+            <option value="">All</option>
+            <option th:each="time : ${sortedArrivalTimes}" th:value="${time}" th:text="${time}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label for="departureDate">
+            <i class="fas fa-calendar"></i> Departure Date:
+        </label>
+        <select name="departureDate" id="departureDate" style="margin-right: 20px;">
+            <option value="">All</option>
+            <option th:each="flight : ${flights}" th:value="${flight.departureDate}" th:text="${flight.departureDate}"></option>
+        </select>
+    </div>
+
+    <button type="submit">Search</button>
+</form>
+
+<h2>Search Results</h2>
+<table>
+    <tr>
+        <th style="background-color: #5dbcd2; color: white;">Flight Name</th>
+        <th style="background-color: #5dbcd2; color: white;">Flight Number</th>
+        <th style="background-color: #5dbcd2; color: white;">Departure Time</th>
+        <th style="background-color: #5dbcd2; color: white;">Arrival Time</th>
+        <th style="background-color: #5dbcd2; color: white;">Departure Date</th>
+        <th style="background-color: #5dbcd2; color: white;">Arrival Date</th>
+        <th style="background-color: #5dbcd2; color: white;">Origin City</th>
+        <th style="background-color: #5dbcd2; color: white;">Destination City</th>
+        <th style="background-color: #5dbcd2; color: white;">Action</th>
+    </tr>
+    <tr th:each="flight : ${searchResults}">
+        <td th:text="${flight.flightName}"></td>
+        <td th:text="${flight.flightNumber}"></td>
+        <td th:text="${flight.departureTime}"></td>
+        <td th:text="${flight.arrivalTime}"></td>
+        <td th:text="${flight.departureDate}"></td>
+        <td th:text="${flight.arrivalDate}"></td>
+        <td th:text="${flight.originCity}"></td>
+        <td th:text="${flight.destinationCity}"></td>
+<!--        <td>-->
+<!--            <a th:href="@{/seats/{flightN}(flightN=${flight.flightNumber})}">đặt vé</a>-->
+<!--        </td>-->
+        <td>
+            <form method="post" th:action="@{/reserveFlight}">
+                <input type="hidden" name="flightNumber" th:value="${flight.flightNumber}" />
+                <input type="hidden" name="flightName" th:value="${flight.flightName}" />
+                <input type="hidden" name="departureTime" th:value="${flight.departureTime}"/>
+                <input type="hidden" name="departureDate" th:value="${flight.departureDate}"/>
+                <input type="hidden" name="originCity" th:value="${flight.originCity}"/>
+                <input type="hidden" name="destinationCity" th:value="${flight.destinationCity}"/>
+                <!-- Add more hidden fields with other flight information -->
+                <button type="submit">Đặt vé</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<footer class="mt-auto fixed-bottom">
+    <!-- Footer content -->
+    <nav class="navbar navbar-expand-md navbar-dark font-weight-bold nav flex-column align-items-center"
+         style="background:url('../img/nav.jpg'); border:3px solid black;">
+        <div class="footer-container">
+            <div class="footer-icons d-flex justify-content-center">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p style="color: rgba(255, 255, 255, 0.8); text-align: center;">Hope you have a good trip with us</p>
+            <p style="color: rgba(255, 255, 255, 0.6); text-align: center;">&copy; 2023 Your Company Name. All rights
+                reserved.</p>
+        </div>
+    </nav>
+</footer>
+<!-- Bootstrap core JavaScript -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+<!-- Thêm thư viện jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Thêm thư viện jQuery UI -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" preserveAspectRatio="none"
+     style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;">
+    <defs>
+        <style type="text/css"></style>
+    </defs>
+    <text x="0" y="25" style="font-weight:bold;font-size:25pt;font-family:Arial, Helvetica, Open Sans, sans-serif">
+        500x500
+    </text>
+</svg>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Add Booking</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h2>Add Booking</h2>
+      <form method="post" th:object="${booking}" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="soDienThoai">Số điện thoại:</label>
+          <input type="text" class="form-control" id="soDienThoai" name="soDienThoai"
+                 th:field="*{so_dien_thoai}" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" name="email" th:field="*{email}" />
+        </div>
+        <div class="form-group">
+          <label for="hoTen">Họ và tên:</label>
+          <input type="text" class="form-control" id="hoTen" name="hoTen" th:field="*{ho_ten}" />
+        </div>
+        <div class="form-group">
+          <label for="idCard">Số CMND/CCCD:</label>
+          <input type="text" class="form-control" id="idCard" name="idCard" th:field="*{id_card}" />
+        </div>
+        <div class="form-group">
+          <label for="flightNumber">Mã chuyến bay:</label>
+          <input type="text" class="form-control" id="flightNumber" name="flightNumber"
+                 th:field="*{flight_number}" />
+        </div>
+        <div class="form-group">
+          <label for="loaiGhe">Loại ghế:</label>
+          <select class="form-control" id="loaiGhe" name="loaiGhe" th:field="*{loai_ghe}">
+            <option value="economy">Economy</option>
+            <option value="business">Business</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="maVe">Mã vé:</label>
+          <input type="text" class="form-control" id="maVe" name="maVe" th:field="*{ma_ve}" />
+        </div>
+        <div class="form-group">
+          <label for="price">Giá vé:</label>
+          <input type="number" class="form-control" id="price" name="price" th:field="*{price}" />
+        </div>
+        <div class="form-group">
+          <label for="imgLink">Link ảnh:</label>
+          <input type="text" class="form-control" id="imgLink" name="imgLink" th:field="*{imgLink}" />
+        </div>
+        <button type="submit" class="btn btn-primary">Add Booking</button>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

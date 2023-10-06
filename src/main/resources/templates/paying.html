@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .booking-details {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        select {
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        .no-booking {
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<h1>Payment</h1>
+<p>Số dư tài khoản: <span th:text="${balance}"></span></p>
+<div class="booking-details" th:if="${booking != null}">
+    <p>Booking details:</p>
+    <p>Mã Vé: <span th:text="${booking.ma_ve}"></span></p>
+    <p>Số điện thoại: <span th:text="${booking.so_dien_thoai}"></span></p>
+    <p>Email: <span th:text="${booking.email}"></span></p>
+    <p>Họ tên: <span th:text="${booking.ho_ten}"></span></p>
+    <p>Số định danh: <span th:text="${booking.id_card}"></span></p>
+    <p>Mã số chuyến bay: <span th:text="${booking.flight_number}"></span></p>
+    <p>Loại ghế: <span th:text="${booking.loai_ghe}"></span></p>
+    <p>Giá tiền: <span th:text="${booking.price}"></span></p>
+    <p>Vui lòng kiểm tra kĩ thông tin trên và tiến hành đặt vé</p>
+
+    <!-- Payment form -->
+    <form class="payment-form" th:action="@{/bookings/payment/success}" method="post">
+        <label for="paymentMethod">Phương thức thanh toán:</label>
+        <select id="paymentMethod" name="paymentMethod">
+            <option value="balance">Sử dụng tài khoản balance</option>
+            <option th:each="payment : ${paymentMethods}" th:value="${payment.id}" th:text="${payment.name}"></option>
+        </select>
+        <input type="hidden" name="ma_ve" th:value="${booking.ma_ve}" />
+        <input type="submit" value="Complete Payment" />
+    </form>
+</div>
+
+<div class="no-booking" th:if="${booking == null}">
+    <p>No booking information found.</p>
+    <!-- Add appropriate error message or redirection link here -->
+</div>
+</body>
+</html>

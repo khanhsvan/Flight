@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Thanh Toan Detail</title>
+  <!-- Đường dẫn tới tập tin CSS của Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css">
+  <style>
+    /* Tùy chỉnh CSS cho form */
+    .form-table th {
+      width: 150px;
+      font-weight: bold;
+    }
+    .form-table td {
+      padding-left: 10px;
+    }
+  </style>
+</head>
+<body>
+<h2>Thanh Toan Detail</h2>
+<table class="form-table">
+  <tr>
+    <th>Payment ID</th>
+    <td th:text="${thanhToan.paymentId}"></td>
+  </tr>
+  <tr>
+    <th>Payment Status</th>
+    <td th:text="${thanhToan.paymentStatus}"></td>
+  </tr>
+  <tr>
+    <th>Payment Amount</th>
+    <td th:text="${thanhToan.paymentAmount}"></td>
+  </tr>
+  <tr>
+    <th>Payment Currency</th>
+    <td th:text="${thanhToan.paymentCurrency}"></td>
+  </tr>
+  <tr>
+    <th>Payment Date</th>
+    <td th:text="${thanhToan.paymentDate}"></td>
+  </tr>
+</table>
+<a href="/thanhtoan" class="btn btn-primary">Back to List</a>
+</body>
+</html>

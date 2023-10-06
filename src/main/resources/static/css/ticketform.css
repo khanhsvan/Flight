@@ -1,0 +1,73 @@
+input[type=text], input[type=password], input[type=email], input[type=number] {
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form-outline {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-half {
+  width: 50%;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.payment-half {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center horizontally */
+  justify-content: flex-end; /* align to bottom */
+  margin-top: 20px;
+}
+
+.payment-half .form-control-lg, .payment-half .select {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+}
+
+.payment-half .form-outline label {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.form-half.ImgLink-half {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-half.ImgLink-half label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.form-half.ImgLink-half input[type="text"] {
+  font-size: 16px;
+  padding: 12px 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%;
+}
+

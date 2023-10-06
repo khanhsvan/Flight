@@ -1,0 +1,69 @@
+<!-- editFlightForm.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chỉnh sửa Chuyến Bay</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1>Chỉnh sửa Chuyến Bay</h1>
+  <!-- Form fields for Flight data -->
+  <form th:action="@{/flights/edit/{id}(id=${flight.getId()})}" method="POST" th:object="${flight}">
+
+    <div class="form-group">
+      <label for="flightName">Tên chuyến bay:</label>
+      <input type="text" id="flightName" class="form-control" name="flightName" th:value="${flight.getFlightName()}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="flightNumber">Số chuyến bay:</label>
+      <input type="text" id="flightNumber" class="form-control" name="flightNumber" th:value="${flight.getFlightNumber()}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="departureDate">Ngày khởi hành:</label>
+      <input type="date" id="departureDate" class="form-control" name="departureDate" th:value="${flight.getDepartureDate()}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="arrivalDate">Ngày đến:</label>
+      <input type="date" id="arrivalDate" class="form-control" name="arrivalDate" th:value="${flight.getArrivalDate()}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="departureTime">Giờ khởi hành:</label>
+      <input type="time" id="departureTime" class="form-control" name="departureTime" th:value="${flight.getDepartureTime()}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="arrivalTime">Giờ đến:</label>
+      <input type="time" id="arrivalTime" class="form-control" name="arrivalTime" th:value="${flight.getArrivalTime()}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="numberSeat">Số lượng ghế:</label>
+      <input type="number" id="numberSeat" class="form-control" name="numberSeat" th:value="${flight.getNumberSeat()}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="originCity">Thành phố xuất phát:</label>
+      <input type="text" id="originCity" class="form-control" name="originCity" th:value="${flight.getOriginCity()}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="destinationCity">Thành phố đích:</label>
+      <input type="text" id="destinationCity" class="form-control" name="destinationCity" th:value="${flight.getDestinationCity()}" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cập nhật Chuyến Bay</button>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/carousel.css">
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-top: 40px;
+        }
+
+        div {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 30px;
+        }
+
+        p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        p strong {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Update Button */
+        .update-button {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .update-button:hover {
+            background-color: #45a049;
+        }
+
+        .required-fields {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .required-fields.open {
+            display: block;
+        }
+
+        .required-fields p {
+            margin-bottom: 5px;
+        }
+
+        .save-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2196f3;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .save-button:hover {
+            background-color: #1976d2;
+        }
+
+        .icon {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+<div class="content">
+    <div>
+        <h1><i class="fas fa-user-circle icon"></i>User Profile</h1>
+        <p><strong><i class="fas fa-user icon"></i>Username:</strong> [[${user.username}]]</p>
+        <p><strong><i class="fas fa-envelope icon"></i>Email:</strong> [[${user.email}]]</p>
+        <p><strong><i class="fas fa-id-card icon"></i>ID Card:</strong> [[${user.idCard}]]</p>
+        <p><strong><i class="fas fa-user icon"></i>Name:</strong> [[${user.name}]]</p>
+        <p><strong><i class="fas fa-balance-scale icon"></i>Balance:</strong> [[${user.balance}]]</p>
+
+        <button class="update-button" onclick="toggleRequiredFields()"><i class="fas fa-edit icon"></i>Update</button>
+
+        <div class="required-fields" id="requiredFields">
+            <p><strong><i class="fas fa-envelope icon"></i>New Email:</strong> <input type="email"></p>
+            <p><strong><i class="fas fa-id-card icon"></i>New ID Card:</strong> <input type="text"></p>
+            <p><strong><i class="fas fa-user icon"></i>New Name:</strong> <input type="text"></p>
+            <button class="save-button" onclick="performUpdate()"><i class="fas fa-save icon"></i>Save</button>
+        </div>
+    </div>
+</div>
+<div>
+    <p><a href="/userdashboard">trở lại</a></p>
+</div>
+<!-- Add the Font Awesome library -->
+<script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+
+<script>
+    function toggleRequiredFields() {
+        var requiredFields = document.getElementById("requiredFields");
+        requiredFields.classList.toggle("open");
+    }
+
+    function performUpdate() {
+        // Code to handle the update functionality
+        // You can use JavaScript or make an AJAX call to update the user profile
+        alert("Profile updated successfully!");
+    }
+</script>
+
+</body>
+</html>

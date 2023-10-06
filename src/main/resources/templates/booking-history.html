@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Booking History</title>
+</head>
+<body>
+<h1>Booking History</h1>
+<table>
+  <tr>
+    <th>Ticket ID</th>
+    <th>Price</th>
+    <th>Seat Number</th>
+    <th>Seat Type</th>
+    <th>Payment Status</th>
+    <th>Payment Date</th>
+    <th>Flight Number</th>
+    <th>Flight Date</th>
+    <th>Origin</th>
+    <th>Destination</th>
+  </tr>
+  <tr th:each="booking : ${bookingHistory}">
+    <td th:text="${booking.ticketId}"></td>
+    <td th:text="${booking.price}"></td>
+    <td th:text="${booking.seatNumber}"></td>
+    <td th:text="${booking.seatType}"></td>
+    <td th:text="${booking.paymentStatus}"></td>
+    <td th:text="${booking.paymentDate}"></td>
+    <td th:text="${booking.flightNumber}"></td>
+    <td th:text="${booking.flightDate}"></td>
+    <td th:text="${booking.origin}"></td>
+    <td th:text="${booking.destination}"></td>
+  </tr>
+</table>
+</body>
+</html>

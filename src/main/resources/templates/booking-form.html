@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: url('img/nav.jpg');
+            border: 3px solid black;
+            padding: 10px 20px;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand i {
+            margin-right: 5px;
+        }
+
+        .navbar-nav {
+            display: flex;
+        }
+
+        .nav-item {
+            margin-left: 10px;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin-left: 20px; /* Added left margin */
+            white-space: nowrap; /* Added to prevent text from wrapping */
+        }
+
+        .nav-link i {
+            margin-right: 10px;
+        }
+
+        .nav-link:hover {
+            border-bottom: 2px solid lightskyblue;
+        }
+
+        /* Form */
+        form {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .form-icon {
+            margin-right: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer */
+        footer {
+            background: url('img/nav.jpg');
+            border: 3px solid black;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer-icons {
+            margin-bottom: 20px;
+        }
+
+        .social-icon {
+            color: #fff;
+            font-size: 20px;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: lightskyblue;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- Navigation Bar -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        /* Add underline effect on hover */
+        .nav-link:hover {
+            border-bottom: 2px solid lightskyblue;
+        }
+    </style>
+
+    <nav class="navbar navbar-expand-md navbar-dark font-weight-bold nav justify-content-between"
+         style="background:url('img/nav.jpg'); border:3px solid black;">
+
+        <!-- Logo -->
+        <a class="navbar-brand" href="/">
+            <i class="fas fa-home"></i> HOME PAGE
+        </a>
+
+        <!-- Collapsible Nav Links -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <i><p>[[${balance}]]</p></i>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/flight/search?">
+                        <i class="fas fa-search"></i> Search Flight
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/payment">
+                        <i class="fas fa-credit-card"></i> Payment
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-history"></i> Booking History
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/userprofile">
+                        <i class="fas fa-user"></i> User Profile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">
+                        <i class="fas fa-user"></i> Log Out
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<form th:action="@{/bookings/book/{flightNumber}(flightNumber=${flightNumber})}" method="post">
+    <input type="hidden" name="flightNumber" th:value="${flightNumber}" />
+
+    <label for="soDienThoai">
+        <i class="fas fa-phone form-icon"></i>
+        Số điện thoại:
+    </label>
+    <input type="text" id="soDienThoai" name="so_dien_thoai" required />
+
+    <label for="email">
+        <i class="fas fa-envelope form-icon"></i>
+        Email:
+    </label>
+    <input type="email" id="email" name="email" th:value="${user.email}" required />
+
+    <label for="hoTen">
+        <i class="fas fa-user form-icon"></i>
+        Họ tên:
+    </label>
+    <input type="text" id="hoTen" name="ho_ten" th:value="${user.name}" required />
+
+    <label for="idCard">
+        <i class="fas fa-id-card form-icon"></i>
+        ID Card:
+    </label>
+    <input type="text" id="idCard" name="id_card" th:value="${user.idCard}" required />
+
+    <label for="seatNumber">
+        <i class="fas fa-chair form-icon"></i>
+        Seat Number:
+    </label>
+    <input type="text" id="seatNumber" name="seatNumber" th:value="${fs.seat_number}" required />
+
+    <button type="submit">Đặt vé</button>
+</form>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>Hope you have a good trip with us</p>
+        <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

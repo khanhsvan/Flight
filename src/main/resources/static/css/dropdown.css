@@ -1,0 +1,40 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Mar 24, 2023, 10:58:57 PM
+    Author     : ASUS
+*/
+
+/* Style the dropdown button */
+.dropdown-toggle {
+  background-color: #428bca;
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Style the dropdown menu */
+.dropdown-menu {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Style the dropdown links */
+.dropdown-item {
+  color: #333;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+/* Style the dropdown links on hover */
+.dropdown-item:hover {
+  background-color: #ddd;
+}

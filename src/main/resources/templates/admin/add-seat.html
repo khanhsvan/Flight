@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Seat</title>
+  <!-- Đường dẫn tới tập tin CSS của Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h2>Add Seat</h2>
+  <form th:action="@{/seats/add}" method="post" th:object="${seat}">
+    <div class="mb-3">
+      <label for="seatNumber" class="form-label">Seat Number:</label>
+      <input type="text" class="form-control" id="seatNumber" name="seatNumber" required>
+    </div>
+    <div class="mb-3">
+      <label for="classType" class="form-label">Class Type:</label>
+      <select class="form-select" id="classType" name="classType" required>
+        <option value="Economy">Economy</option>
+        <option value="Business">Business</option>
+      </select>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="reserved" name="reserved">
+      <label class="form-check-label" for="reserved">Reserved:</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>
+</body>
+</html>

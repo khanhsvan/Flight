@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Thanh Toan</title>
+  <!-- Đường dẫn tới tập tin CSS của Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h2>Edit Thanh Toan</h2>
+  <form th:action="@{/thanhtoan/update/{id}(id=${thanhToan.id})}" method="post" th:object="${thanhToan}">
+    <div class="mb-3">
+      <label for="paymentId" class="form-label">Payment ID:</label>
+      <input type="text" class="form-control" id="paymentId" name="paymentId" th:value="${thanhToan.paymentId}" required>
+    </div>
+    <div class="mb-3">
+      <label for="paymentStatus" class="form-label">Payment Status:</label>
+      <input type="text" class="form-control" id="paymentStatus" name="paymentStatus" th:value="${thanhToan.paymentStatus}" required>
+    </div>
+    <div class="mb-3">
+      <label for="paymentAmount" class="form-label">Payment Amount:</label>
+      <input type="text" class="form-control" id="paymentAmount" name="paymentAmount" th:value="${thanhToan.paymentAmount}" required>
+    </div>
+    <div class="mb-3">
+      <label for="paymentCurrency" class="form-label">Payment Currency:</label>
+      <input type="text" class="form-control" id="paymentCurrency" name="paymentCurrency" th:value="${thanhToan.paymentCurrency}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>
+</body>
+</html>

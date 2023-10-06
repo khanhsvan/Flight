@@ -1,0 +1,54 @@
+<!-- admin/editBookingForm.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chỉnh Sửa Booking</title>
+</head>
+<body>
+<h1>Chỉnh Sửa Booking</h1>
+<form th:action="@{/bookings/edit/{ma_ve}(ma_ve=${booking.ma_ve})}" method="POST">
+    <div class="form-group">
+        <label for="so_dien_thoai">Số Điện Thoại:</label>
+        <input type="text" id="so_dien_thoai" class="form-control" name="so_dien_thoai" th:value="${booking.so_dien_thoai}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" class="form-control" name="email" th:value="${booking.email}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="ho_ten">Họ Tên:</label>
+        <input type="text" id="ho_ten" class="form-control" name="ho_ten" th:value="${booking.ho_ten}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="id_card">ID Card:</label>
+        <input type="text" id="id_card" class="form-control" name="id_card" th:value="${booking.id_card}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="flight_number">Flight Number:</label>
+        <input type="text" id="flight_number" class="form-control" name="flight_number" th:value="${booking.flight_number}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="loai_ghe">Loại Ghế:</label>
+        <input type="text" id="loai_ghe" class="form-control" name="loai_ghe" th:value="${booking.loai_ghe}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" id="price" class="form-control" name="price" th:value="${booking.price}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="ImgLink">Img Link:</label>
+        <input type="text" id="ImgLink" class="form-control" name="ImgLink" th:value="${booking.ImgLink}" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cập Nhật Booking</button>
+</form>
+</body>
+</html>

@@ -40,7 +40,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-bom</artifactId>
-            <version>5.0.6.RELEASE</version>
+            <version>6.2.4</version>
         </dependency>
 
         <dependency>
